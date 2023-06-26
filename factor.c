@@ -8,7 +8,7 @@
 void factorize(char *buff)
 {
     int i;
-    int num;
+    int number;
 
     number = atoi(buff);
 

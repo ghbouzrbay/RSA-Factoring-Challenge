@@ -19,7 +19,7 @@ size_t count;
         fprintf(stderr, "Error: can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
     }
-line = getline(&buffer, &count, fptr);
+line = getline(&buffer, &count, file);
     while (line != -1)
     {
         factorize(buffer);
