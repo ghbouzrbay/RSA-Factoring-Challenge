@@ -5,10 +5,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#define _GNU_SOURCE
 
 /***************FUNCTIONS************/
 
-void factorize(int number);
+void factorize(char *buff);
 int main(int argc, char *argv[]);
 
 #endif /******FOCTOR_H********/
