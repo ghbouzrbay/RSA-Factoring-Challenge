@@ -3,27 +3,27 @@
 int main(int argc, char *argv[])
 {
     
-char line[100];
-    int number;
+size_t count;
+	ssize_t line;
+	char *buffer = NULL;
  FILE *file = fopen(argv[1], "r");	
-    if (argc != 2)
+    
+ if (argc != 2)
 	{
-        printf("Usage: factors <file>\n");
-        return 1;
+        fprintf(stderr, "Usage: factor <file>\n");
+		exit(EXIT_FAILURE);
     }
 
     if (file == NULL)
     {
-        printf("Failed to open file\n");
-        return (1);
+        fprintf(stderr, "Error: can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
     }
-
-    while (fgets(line, sizeof(line), file) != NULL)
+line = getline(&buffer, &count, fptr);
+    while (line != -1)
     {
-        number = atoi(line);
-        factorize(number);
+        factorize(buffer);
     }
 
-    fclose(file);
     return (0);
 }

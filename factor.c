@@ -7,8 +7,8 @@
 
 void factorize(char *buff)
 {
-    u_int32_t i;
-    u_int32_t num;
+    int i;
+    int num;
 
     number = atoi(buff);
 
