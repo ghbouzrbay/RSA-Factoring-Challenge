@@ -1,4 +1,5 @@
 #include "factor.h"
+#include <math.h>
 
 /**
  * factorize_number - ...
@@ -11,9 +12,10 @@
 
 Factorization* factorize_number(int number, int* count)
 {
-    Factorization* factorizations = NULL;
+  int i;
+  Factorization* factorizations = NULL;
     *count = 0;
-int i;
+   
     for (i = 2; i <= sqrt(number); i++)
     {
         while (number % i == 0)
@@ -46,17 +48,18 @@ int i;
 void factorize_file(const char* file_path)
 {
     FILE* file = fopen(file_path, "r");
+    int count = 0;
+    int* numbers = NULL;
+    int i, j;
+    int factor_count;
+    int number;
+
     if (file == NULL)
     {
         printf("Failed to open the file.\n");
         return;
     }
 
-    int count = 0;
-    int* numbers = NULL;
-int i, j;
-    int factor_count;
-    int number;
     while (fscanf(file, "%d", &number) == 1)
     {
         count += 1;

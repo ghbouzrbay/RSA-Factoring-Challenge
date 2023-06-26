@@ -14,9 +14,7 @@ typedef struct {
 
 /***************FUNCTIONS************/
 
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 Factorization* factorize_number(int number, int* count);
 void factorize_file(const char* file_path);
-int main(int argc, char *argv[]);
 
 #endif /******FOCTOR_H********/
