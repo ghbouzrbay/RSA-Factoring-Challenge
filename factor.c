@@ -1,26 +1,83 @@
 #include "factor.h"
 
 /**
- * factorize - The function factorize a number
- * @buff: pointer to the address of the number
- *Return: 0
+ * factorize_number - ...
+ *
+ * @number: ...
+ * @count: ...
+ * 
+ * Return: ...
  */
 
-int factorize(char *buff)
+Factorization* factorize_number(int number, int* count)
 {
-    int i;
-    int number;
-
-    number = atoi(buff);
-
-    for (i = 2; i <= number / 2; i++)
+    Factorization* factorizations = NULL;
+    *count = 0;
+int i;
+    for (i = 2; i <= sqrt(number); i++)
     {
-        if (number % i == 0)
+        while (number % i == 0)
 	{
-            printf("%d=%d*%d\n", number, number/i, number);
-            break;
-	}
+            *count += 1;
+            factorizations = realloc(factorizations, sizeof(Factorization) * (*count));
+            factorizations[*count - 1].p = i;
+            factorizations[*count - 1].q = number / i;
+            number /= i;
+        }
     }
-return (0);
+
+    if (number > 1)
+    {
+        *count += 1;
+        factorizations = realloc(factorizations, sizeof(Factorization) * (*count));
+        factorizations[*count - 1].p = number;
+        factorizations[*count - 1].q = 1;
+    }
+
+    return (factorizations);
+}
+
+/**
+ * factorize_file - ...
+ * 
+ * @file_path: ...
+ */
+
+void factorize_file(const char* file_path)
+{
+    FILE* file = fopen(file_path, "r");
+    if (file == NULL)
+    {
+        printf("Failed to open the file.\n");
+        return;
+    }
+
+    int count = 0;
+    int* numbers = NULL;
+int i, j;
+    int factor_count;
+    int number;
+    while (fscanf(file, "%d", &number) == 1)
+    {
+        count += 1;
+        numbers = realloc(numbers, sizeof(int) * count);
+        numbers[count - 1] = number;
+    }
+
+    fclose(file);
+
+    for (i = 0; i < count; i++)
+    {
+        Factorization* factorizations = factorize_number(numbers[i], &factor_count);
+
+        for (j = 0; j < factor_count; j++)
+	{
+            printf("%d=%d*%d\n", factorizations[j].p * factorizations[j].q, factorizations[j].p, factorizations[j].q);
+        }
+
+        free(factorizations);
+    }
+
+    free(numbers);
 }
 

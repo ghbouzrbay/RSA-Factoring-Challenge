@@ -5,12 +5,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#define _GNU_SOURCE
+#include <math.h>
+
+typedef struct {
+    int p;
+    int q;
+} Factorization;
 
 /***************FUNCTIONS************/
 
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-int factorize(char *buff);
+Factorization* factorize_number(int number, int* count);
+void factorize_file(const char* file_path);
 int main(int argc, char *argv[]);
 
 #endif /******FOCTOR_H********/
