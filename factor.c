@@ -3,9 +3,10 @@
 /**
  * factorize - The function factorize a number
  * @buff: pointer to the address of the number
+ *Return: 0
  */
 
-void factorize(char *buff)
+int factorize(char *buff)
 {
     int i;
     int number;
@@ -17,8 +18,9 @@ void factorize(char *buff)
         if (number % i == 0)
 	{
             printf("%d=%d*%d\n", number, number/i, number);
-        break;
+            break;
 	}
     }
+return (0);
 }
 
