@@ -26,4 +26,5 @@ line = getline(&buffer, &count, file);
     }
 
     return (0);
+fclose(file);
 }
