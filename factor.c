@@ -3,9 +3,9 @@
 /**
  * factorize - The function factorize a number
  * @buff: pointer to the address of the number
+ *Return: 0
  */
-
-void factorize(char *buff)
+int factorize(char *buff)
 {
     int i;
     int number;
