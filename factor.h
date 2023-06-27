@@ -14,5 +14,5 @@ typedef struct {
 
 /***************FUNCTIONS************/
 
-void smallest_divisor(long int number);
+int smallest_divisor(long int number);
 #endif /******FOCTOR_H********/
