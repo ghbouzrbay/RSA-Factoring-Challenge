@@ -2,26 +2,32 @@
 
 import sys
 
-def factorize(number):
-    factors = []
-    for i in range(2, number):
-        if number % i == 0:
-            factors.append((i, number // i))
-    return factors
+def smallest_divisor(num: int) -> int:
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: factors <file>")
-        return
+    while num % 2 == 0:
+        return 2
 
-    filename = sys.argv[1]
+    factor = 3
+    while factor * factor <= num:
+        if num % factor == 0:
+            return factor
+        else:
+            factor += 2
 
-    with open(filename, 'r') as file:
-        for line in file:
-            number = int(line.strip())
-            factor_pairs = factorize(number)
-            for p, q in factor_pairs:
-                print(f"{number}={p}*{q}")
+    return 1
+
+
+def factor():
+
+    with open(sys.argv[1]) as f:
+        line = f.readline()
+        while line != '':
+            num = int(line)
+            div = smallest_divisor(num)
+            print(f"{num}={num//div}*{div}")
+
+            line = f.readline()
+
 
 if __name__ == "__main__":
-    main()
+    (factor)
