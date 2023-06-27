@@ -2,32 +2,30 @@
 
 import sys
 
-def smallest_divisor(num: int) -> int:
+def factorize(value):
+    """"print a simple descomposition of an integer > 1"""
+    i = 2
 
-    while num % 2 == 0:
-        return 2
+    if value < 2:
+        return
+    print()
+    print(value, "<- value-bef")
+    while value % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(value, value / i, i))
+    print(value, "<- value-aft")
+    print()
 
-    factor = 3
-    while factor * factor <= num:
-        if num % factor == 0:
-            return factor
-        else:
-            factor += 2
+if len(argv) != 2:
+    exit()
 
-    return 1
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
 
-
-def factor():
-
-    with open(sys.argv[1]) as f:
-        line = f.readline()
-        while line != '':
-            num = int(line)
-            div = smallest_divisor(num)
-            print(f"{num}={num//div}*{div}")
-
-            line = f.readline()
-
-
-if __name__ == "__main__":
-    (factor)
+        while line != "":
+            value = int(line.split('\n')[0])
+            factorize(value)
+            line = file.readline()
+except:
+    pass
