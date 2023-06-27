@@ -6,22 +6,13 @@
 /**
  * main - ...
  *
- *@argc: ...
- *@argv: ...
- *
  * Return: ...
  */
 
-int main(int argc, char* argv[])
+int main()
 {
-const char* file_path = argv[1];
-if (argc != 2)
-    {
-        printf("Usage: factors <file>\n");
-        return (1);
-    }
-
-    factorize_file(file_path);
+    long int num;
+    find_smallest_divisor(num);
 
     return (0);
 }

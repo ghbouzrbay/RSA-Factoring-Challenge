@@ -14,7 +14,5 @@ typedef struct {
 
 /***************FUNCTIONS************/
 
-Factorization* factorize_number(int number, int* count);
-void factorize_file(const char* file_path);
-
+void smallest_divisor(long int number);
 #endif /******FOCTOR_H********/
