@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-factors()
+check_factor()
 {
 	if [ $# -ne 3 ];
         then
