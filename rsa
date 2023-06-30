@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+factorize() {
+    num=$1
+
+    for ((i=2; i <= num/2; i++)); do
+        if ((num % i == 0)); then
+            echo "$num=$i*$(($num/i))"
+            return
+        fi
+    done
+
+    echo "Unable to factorize $num into prime numbers"
+}
+
+if [ $# -ne 1 ]; then
+    echo 'Usage: rsa <file>'
+    exit 1
+fi
+
+while IFS= read -r number; do
+    factorize "$number"
+done < "$1"
+
